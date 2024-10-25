@@ -1,14 +1,19 @@
-import './App.css'; 
-import { useClick } from './utils/useClick';
+import './App.css';
+import { useConfirm } from './utils/useConfirm';
+
 
 
 
 function App() {
-  const sayHello = () => console.log("Say hello")
-  const title = useClick(sayHello);
+  const deleteWorld = () => {
+    console.log("Deleting...");
+  }
+  const abort = () => console.log("Canceled");
+  const confirmDelete = useConfirm("Are you sure ?",deleteWorld,abort);
   return (
     <>
-      <h1 ref={title}>Hi</h1>
+      <h1>Hi</h1>
+      <button onClick={confirmDelete}>Delete the world</button>
     </>
   );
 }
