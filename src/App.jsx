@@ -1,16 +1,13 @@
 import './App.css';
-import { useNetwork } from './utils/useNetwork';
+import { useScroll } from './utils/useScroll';
 
 
 function App() {
-  const handleNetworkChange =  (online) => {
-    console.log(online ? "We On Fire!" : "We Down To The Moon");
-  }
-  const status = useNetwork(handleNetworkChange);
+  const {y} = useScroll();
   return (
-    <>
-      <h1>{status ? "Online" : "Offline"}</h1>
-    </>
+    <div style={{height: "100vh"}}>
+      <h1 style={{color: y > 1 ? "red" : "blue" }}>Hello</h1>
+    </div>
   );
 }
 
