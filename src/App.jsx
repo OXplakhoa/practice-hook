@@ -1,15 +1,14 @@
-import './App.css';
-import { useTitle } from './utils/useTitle';
+import './App.css'; 
+import { useClick } from './utils/useClick';
 
 
 
 function App() {
-  const titleUpdate = useTitle("Loading...");
-  setTimeout(() => titleUpdate("Practice Hooks"),5000);
+  const sayHello = () => console.log("Say hello")
+  const title = useClick(sayHello);
   return (
     <>
-      <div>Hi</div>
-
+      <h1 ref={title}>Hi</h1>
     </>
   );
 }
