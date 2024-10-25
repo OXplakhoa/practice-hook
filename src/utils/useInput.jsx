@@ -1,3 +1,4 @@
+import { useState } from "react";
 export const useInput = (initValue, valid) => {
     const [value, setValue] = useState(initValue);
     const onChange = (e) => {
