@@ -1,13 +1,15 @@
 import './App.css';
-import { usePreventLeave } from './utils/usePreventLeave';
+import { useBeforeLeave } from './utils/useBeforeLeave';
 
 
 function App() {
-  const {enablePrevent, disablePrevent} = usePreventLeave();
+  const begForLife = () => {
+    console.log("Please don't leave me :<");
+  }
+  useBeforeLeave(begForLife);
   return (
     <>
-      <button onClick={enablePrevent}>Protect</button>
-      <button onClick={disablePrevent}>Unprotect</button>
+      <h1>PLEASEEE</h1>
     </>
   );
 }
