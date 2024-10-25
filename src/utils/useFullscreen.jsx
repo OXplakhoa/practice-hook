@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-
+//Add isFull stage to check
 export const useFullscreen = (callback) => {
   const element = useRef();
   const [isFull, setIsFull] = useState(false);
