@@ -1,19 +1,13 @@
 import './App.css';
-import { useConfirm } from './utils/useConfirm';
-
-
+import { usePreventLeave } from './utils/usePreventLeave';
 
 
 function App() {
-  const deleteWorld = () => {
-    console.log("Deleting...");
-  }
-  const abort = () => console.log("Canceled");
-  const confirmDelete = useConfirm("Are you sure ?",deleteWorld,abort);
+  const {enablePrevent, disablePrevent} = usePreventLeave();
   return (
     <>
-      <h1>Hi</h1>
-      <button onClick={confirmDelete}>Delete the world</button>
+      <button onClick={enablePrevent}>Protect</button>
+      <button onClick={disablePrevent}>Unprotect</button>
     </>
   );
 }
