@@ -1,18 +1,27 @@
 import './App.css';
-import { useInput } from './utils/userInput';
+import { useTab } from './utils/userTab';
 
-
+const content = [
+  {
+    tab: "Section 1",
+    content: "I'm the content of section 1"
+  },
+  {
+    tab: "Section 2",
+    content: "I'm the content of section 2"
+  }
+]
 
 function App() {
-  const maxLen = value => !value.includes("@")
-  const name = useInput("Mr.", maxLen);
+  const {currItem, changeItem} = useTab(0,content)
   return (
     <>
-      <h1>Hello</h1>
-      <h2 style={{ color: name.value.length >= 9 ? "red" : "tear" }}>
-        Count input: {name.value.length + 1}
-      </h2>
-      <input {...name} type="text" placeholder='Name' />
+      {content.map((c,idx) => {
+        return <button onClick={() => changeItem(idx)}>{c.content}</button>
+      })}
+      <div>
+        {currItem.content}
+      </div>
     </>
   );
 }
