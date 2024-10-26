@@ -1,15 +1,19 @@
-import './App.css'
-import { useNotification } from './utils/useNotification';
+import './App.css';
+import { useAxios } from './utils/useAxios';
+
 
 function App() {
-  const triggerNoti = useNotification("WUPS HAPPY HELLOWEEN! 👻🦇🎃",{
-    body: "It's time for Halloween yayy!"
-  });
-  return (
-    <div>
-      <button onClick={triggerNoti}>Click To Notice</button>
-    </div>
-  );
-}
-export default App;
+    const { loading, data, error } = useAxios({ url: 'https://yts.am/api/v2/list_movies.json' });
+    console.log(`Loading: ${loading} - Error: ${error} - Data: ${JSON.stringify(data)}`);
 
+    return (
+        <div>
+            <h1>Hello</h1>
+            {loading && <p>Loading...</p>}
+            {error && <p>Error: {error}</p>}
+            {data && <pre>{JSON.stringify(data, null, 2)}</pre>} 
+        </div>
+    );
+}
+
+export default App;
